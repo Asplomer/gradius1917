@@ -14,6 +14,7 @@ namespace flowspace {
 			Vector2 position;
 			Vector2 speed;
 			float acceleration;
+			int colliderRadius;
 		};
 
 		struct enemy {
@@ -21,6 +22,7 @@ namespace flowspace {
 			Vector2 position;
 			Vector2 speed;
 			float acceleration;
+			int colliderRadius;
 		};
 		extern bool won;
 	}

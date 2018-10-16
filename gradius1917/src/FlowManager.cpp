@@ -8,8 +8,8 @@ namespace flowspace {
 	void initGame() {
 		gameSwitch = true;
 		InitWindow(screenwidth,screenheight,"Gradius 1917");
-		gameplayspace::initGame();
-		currentstate = gameplaystate;
+		menuspace::initMenu();
+		currentstate = menustate;
 		gameLoop();
 	}
 	void gameLoop() {
