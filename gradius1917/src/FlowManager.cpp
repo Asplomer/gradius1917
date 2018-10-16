@@ -2,14 +2,19 @@
 namespace flowspace {
 	gamestate currentstate;
 	bool gameSwitch;
+	unsigned int screenheight = 600;
+	unsigned int screenwidth = 800;
+	Vector2 mousePosition;
 	void initGame() {
-		InitWindow(800,600,"Gradius 1917");
-		currentstate = menustate;
+		gameSwitch = true;
+		InitWindow(screenwidth,screenheight,"Gradius 1917");
+		gameplayspace::initGame();
+		currentstate = gameplaystate;
+		gameLoop();
 	}
 	void gameLoop() {
 		while (gameSwitch){
-			switch (currentstate)
-			{
+			switch (currentstate){
 			case menustate:
 				menuspace::updateMenu();
 				generalDraw();
@@ -23,6 +28,7 @@ namespace flowspace {
 	}
 	void generalDraw() {
 		BeginDrawing();
+		ClearBackground(BLACK);
 		switch (currentstate)
 		{
 		case menustate:

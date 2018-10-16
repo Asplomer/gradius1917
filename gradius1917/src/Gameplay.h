@@ -22,6 +22,7 @@ namespace flowspace {
 			Vector2 speed;
 			float acceleration;
 		};
+		extern bool won;
 	}
 }
 #endif

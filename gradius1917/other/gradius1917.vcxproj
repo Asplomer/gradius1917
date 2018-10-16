@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\FlowManager.h" />
+    <ClInclude Include="..\src\Gameplay.h" />
+    <ClInclude Include="..\src\Menu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\FlowManager.cpp" />
+    <ClCompile Include="..\src\Gameplay.cpp" />
+    <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Menu.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{9A864E38-CE28-4D3D-864B-35BBA1723ED9}</ProjectGuid>
@@ -96,6 +107,7 @@
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\raylib-2.0.0-Win32-msvc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(TargetDir)res"
@@ -113,6 +125,7 @@ xcopy "$(SolutionDir)res" "$(TargetDir)res" /E /Y /S</Command>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\raylib-2.0.0-Win32-msvc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(TargetDir)res"
@@ -165,17 +178,6 @@ xcopy "$(SolutionDir)res" "$(TargetDir)res" /E /Y /S</Command>
 xcopy "$(SolutionDir)res" "$(TargetDir)res" /E /Y /S</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="FlowManager.cpp" />
-    <ClCompile Include="Gameplay.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="FlowManager.h" />
-    <ClInclude Include="Gameplay.h" />
-    <ClInclude Include="Menu.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
