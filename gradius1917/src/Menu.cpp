@@ -2,6 +2,7 @@
 namespace flowspace {
 	namespace menuspace {
 		void initMenu() {
+			startGame();
 		}
 		void updateMenu() {
 		}
@@ -10,6 +11,8 @@ namespace flowspace {
 		void exitGame() {
 		}
 		void startGame() {
+			gameplayspace::initGame();
+			currentstate = gameplaystate;
 		}
 	}
 }

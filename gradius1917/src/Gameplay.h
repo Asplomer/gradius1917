@@ -9,6 +9,19 @@ namespace flowspace {
 		void updateGame();
 		void drawGame();
 		void goToMenu();
+
+		struct player {
+			Vector2 position;
+			Vector2 speed;
+			float acceleration;
+		};
+
+		struct enemy {
+			bool active;
+			Vector2 position;
+			Vector2 speed;
+			float acceleration;
+		};
 	}
 }
 #endif
