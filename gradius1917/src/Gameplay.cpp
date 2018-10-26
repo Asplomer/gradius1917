@@ -4,11 +4,12 @@ namespace flowspace {
 		player p1;
 		enemy e1;
 		Vector2 defaultPosition;
-		Texture ship;
+		Texture ship, scavenger;
 		Texture foreground;
 		Texture background;
 		Rectangle frameRec, backRec, foreRec;
 		Rectangle destRec, backScale, foreScale;
+		Rectangle shipCollider;
 		unsigned int framesCounter;
 		float framesSpeed;
 		float backSpeed;
@@ -20,12 +21,15 @@ namespace flowspace {
 			ship= LoadTexture("res/ShipSheet.png");
 			frameRec = { 0.0f, 0.0f, (float)ship.width, (float)ship.height / 2 };
 			destRec = {p1.position.x,p1.position.y, (float)ship.width * 2 *shipScale, (float)ship.height * shipScale};
+			shipCollider = {0.0f,0.0f,(float)ship.width - (float)ship.width/ 8 ,(float)ship.height/2 - (float)ship.height / 4};
 			background = LoadTexture("res/Background.png");
 			backRec = {0.0f,0.0f, (float)background.width, (float)background.height};
 			backScale = {(float)screenwidth / 2, (float) screenheight / 2, (float)screenwidth * 2.0f, (float)screenheight};
 			foreground = LoadTexture("res/Foreground.png");
 			foreRec = { 0.0f,0.0f, (float)foreground.width, (float)foreground.height};
 			foreScale = { (float)screenwidth / 2, (float)screenheight / 2, (float)screenwidth * 2.0f, (float)screenheight};
+			scavenger = LoadTexture("res/Scavenger.png");
+
 
 			defaultPosition.x = 30;
 			defaultPosition.y = screenheight / 2;
@@ -50,6 +54,10 @@ namespace flowspace {
 			if (IsKeyPressed(KEY_Q)) {
 				goToMenu();
 			}
+
+			shipCollider.x = p1.position.x + 10;
+			shipCollider.y = p1.position.y -6;
+
 			e1.position.x -= e1.acceleration * GetFrameTime();
 			if (e1.position.x <= 0) {
 				e1.position.x = screenwidth - 30;
@@ -88,12 +96,15 @@ namespace flowspace {
 		void drawGame() {
 			DrawTexturePro(background, backRec, backScale,{ (float)screenwidth,(float)screenheight/2}, 0.0f, WHITE);
 			DrawTexturePro(foreground, foreRec, foreScale, {(float)screenwidth, (float)screenheight/2}, 0.0f, WHITE);
-			DrawCircle(p1.position.x, p1.position.y, p1.colliderRadius, RED);
 			DrawTexturePro(ship, frameRec,destRec, { (float) ship.width / 2, (float) ship.height / 2}, 0.0f, WHITE);
+			DrawCircle(p1.position.x, p1.position.y, p1.colliderRadius, BLUE);
+			DrawRectangleRec(shipCollider,WHITE);
+			DrawTexture(scavenger, e1.position.x, e1.position.y, WHITE);
 			DrawCircle(e1.position.x, e1.position.y, e1.colliderRadius, BLUE);
 		}
 		void goToMenu() {
 			UnloadTexture(ship);
+			UnloadTexture(scavenger);
 			UnloadTexture(background);
 			UnloadTexture(foreground);
 			menuspace::initMenu();
