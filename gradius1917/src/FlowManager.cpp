@@ -9,11 +9,12 @@ namespace flowspace {
 		gameSwitch = true;
 		InitWindow(screenwidth,screenheight,"Gradius 1917");
 		menuspace::initMenu();
+		SetExitKey(0);
 		currentstate = menustate;
 		gameLoop();
 	}
 	void gameLoop() {
-		while (gameSwitch){
+		while (gameSwitch && !WindowShouldClose()){
 			switch (currentstate){
 			case menustate:
 				menuspace::updateMenu();
