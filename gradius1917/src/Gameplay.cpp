@@ -1,6 +1,7 @@
 #include "Gameplay.h"
 namespace flowspace {
 	namespace gameplayspace {
+		Music bgm;
 		player p1;
 		enemy e1;
 		Vector2 defaultPosition;
@@ -17,10 +18,12 @@ namespace flowspace {
 		unsigned int currentFrame;
 		float shipScale;
 		void initGame() {
+			InitAudioDevice();
+			bgm = LoadMusicStream("res/song3.ogg");
 			shipScale = 1;
 			ship= LoadTexture("res/ShipSheet.png");
-			frameRec = { 0.0f, 0.0f, (float)ship.width, (float)ship.height / 2 };
-			destRec = {p1.position.x,p1.position.y, (float)ship.width * 2 *shipScale, (float)ship.height * shipScale};
+			frameRec = { 0.0f, 0.0f, (float)ship.width, (float)ship.height / 4};
+			destRec = {p1.position.x,p1.position.y, (float)ship.width * 2 *shipScale, (float)ship.height / 2.0f * shipScale};
 			shipCollider = {0.0f,0.0f,(float)ship.width - (float)ship.width/ 8 ,(float)ship.height/2 - (float)ship.height / 4};
 			background = LoadTexture("res/Background.png");
 			backRec = {0.0f,0.0f, (float)background.width, (float)background.height};
@@ -43,8 +46,15 @@ namespace flowspace {
 			p1.acceleration = 200;
 			framesCounter = 0;
 			currentFrame = 0;
+
+			StopMusicStream(bgm);
+			PlayMusicStream(bgm);
+			SetMusicVolume(bgm, 1.0f);
+
 		}
 		void updateGame() {
+			UpdateMusicStream(bgm);
+
 			if (IsKeyDown(KEY_S)){
 				p1.position.y += p1.acceleration * GetFrameTime();
 			}
@@ -56,7 +66,7 @@ namespace flowspace {
 			}
 
 			shipCollider.x = p1.position.x + 10;
-			shipCollider.y = p1.position.y -6;
+			shipCollider.y = p1.position.y - 45 ;
 
 			e1.position.x -= e1.acceleration * GetFrameTime();
 			if (e1.position.x <= 0) {
@@ -67,16 +77,16 @@ namespace flowspace {
 			framesCounter++;
 			framesSpeed = 0.15;
 
-			if (framesCounter >= (60 / framesSpeed))
+			if (framesCounter >= (9 / framesSpeed))
 			{
 				framesCounter = 0;
 				currentFrame++;
 
-				if (currentFrame > 1) currentFrame = 0;
+				if (currentFrame > 3) currentFrame = 0;
 
-				frameRec.y = (float)currentFrame*(float)ship.height / 2;
+				frameRec.y = (float)currentFrame*(float)ship.height / 4;
 			}
-			destRec = { p1.position.x,p1.position.y, (float)ship.width * 2 * shipScale, (float)ship.height * shipScale};
+			destRec = { p1.position.x,p1.position.y,(float)ship.width * 2 * shipScale, (float)ship.height / 2.0f * shipScale};
 
 			//---------------collisions-----------------
 			if (abs(p1.position.x - e1.position.x) < e1.colliderRadius && abs(p1.position.y - e1.position.y) < e1.colliderRadius) {
@@ -103,6 +113,7 @@ namespace flowspace {
 			DrawCircle(e1.position.x, e1.position.y, e1.colliderRadius, BLUE);
 		}
 		void goToMenu() {
+			UnloadMusicStream(bgm);
 			UnloadTexture(ship);
 			UnloadTexture(scavenger);
 			UnloadTexture(background);
