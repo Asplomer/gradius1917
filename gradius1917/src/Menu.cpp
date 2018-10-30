@@ -10,9 +10,14 @@ namespace flowspace {
 			if (IsKeyPressed(KEY_Q)) {
 				exitGame();
 			}
+			if (IsKeyPressed(KEY_C)) {
+				goToCredits();
+			}
 		}
 		void drawMenu() {
-			DrawText("V para empezar, Q para salir",screenwidth/2 - 300, screenheight / 2- 30,40,WHITE);
+			DrawText("Press V to start, Q to exit",screenwidth/2 - 300, screenheight / 2- 30,40,WHITE);
+			DrawText("Press C to view the Credits", screenwidth / 2 - 300, screenheight / 2, 40, WHITE);
+			DrawText("Version 1.0", screenwidth / 2 - 40, screenheight - 20, 20, GRAY);
 		}
 		void exitGame() {
 			gameSwitch = false;
@@ -20,6 +25,10 @@ namespace flowspace {
 		void startGame() {
 			gameplayspace::initGame();
 			currentstate = gameplaystate;
+		}
+		void goToCredits() {
+			creditsspace::initCredits();
+			currentstate = creditsstate;
 		}
 	}
 }

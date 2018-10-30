@@ -2,6 +2,7 @@
 #define MENU_H
 #include "FlowManager.h"
 #include "Gameplay.h"
+#include "Credits.h"
 #include "raylib.h"
 namespace flowspace {
 	namespace menuspace {
@@ -10,6 +11,7 @@ namespace flowspace {
 		void drawMenu();
 		void exitGame();
 		void startGame();
+		void goToCredits();
 	}
 }
 #endif

@@ -19,12 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Credits.h" />
     <ClInclude Include="..\src\FlowManager.h" />
+    <ClInclude Include="..\src\GameOver.h" />
     <ClInclude Include="..\src\Gameplay.h" />
     <ClInclude Include="..\src\Menu.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Credits.cpp" />
     <ClCompile Include="..\src\FlowManager.cpp" />
+    <ClCompile Include="..\src\GameOver.cpp" />
     <ClCompile Include="..\src\Gameplay.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
     <ClCompile Include="..\src\Menu.cpp" />

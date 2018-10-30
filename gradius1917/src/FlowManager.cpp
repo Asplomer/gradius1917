@@ -10,6 +10,7 @@ namespace flowspace {
 		InitWindow(screenwidth,screenheight,"Gradius 1917");
 		menuspace::initMenu();
 		SetExitKey(0);
+		InitAudioDevice();
 		currentstate = menustate;
 		gameLoop();
 	}
@@ -22,6 +23,14 @@ namespace flowspace {
 				break;
 			case gameplaystate:
 				gameplayspace::updateGame();
+				generalDraw();
+				break;
+			case creditsstate:
+				creditsspace::updateCredits();
+				generalDraw();
+				break;
+			case gameoverstate:
+				gameoverspace::updateGameOver();
 				generalDraw();
 				break;
 			}
@@ -38,7 +47,14 @@ namespace flowspace {
 		case gameplaystate:
 			gameplayspace::drawGame();
 			break;
+		case creditsstate:
+			creditsspace::drawCredits();
+			break;
+		case gameoverstate:
+			gameoverspace::drawGameOver();
+			break;
 		}
+
 		EndDrawing();
 	}
 	void exitGame() {

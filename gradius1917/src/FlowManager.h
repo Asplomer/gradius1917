@@ -3,10 +3,12 @@
 #include "raylib.h"
 #include "Gameplay.h"
 #include "Menu.h"
+#include "Credits.h"
+#include "GameOver.h"
 #include <iostream>
 namespace flowspace {
 	enum gamestate{
-		menustate, gameplaystate, gameoverstate, credtisstate
+		menustate, gameplaystate, gameoverstate, creditsstate
 	};
 	extern bool gameSwitch;
 	extern gamestate currentstate;
