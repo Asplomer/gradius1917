@@ -28,7 +28,16 @@ namespace flowspace {
 			double birthDate;
 			unsigned int colliderRadius;
 		};
-
+		struct bomb {
+			bool shot;
+			Vector2 position;
+			float lifetime;
+			float timeToDie;
+			float bombRadius;
+			float speedX;
+			float speedY;
+			Texture2D bombTexture;
+		};
 		struct enemy {
 			bool active;
 			Rectangle collisionRec;

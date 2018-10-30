@@ -28,6 +28,9 @@
     <ClInclude Include="..\src\Credits.h">
       <Filter>States Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Bomb.h">
+      <Filter>States Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Main.cpp">
@@ -47,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Credits.cpp">
       <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Bomb.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Bomb.h" />
     <ClInclude Include="..\src\Credits.h" />
     <ClInclude Include="..\src\FlowManager.h" />
     <ClInclude Include="..\src\GameOver.h" />
@@ -26,6 +27,7 @@
     <ClInclude Include="..\src\Menu.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Bomb.cpp" />
     <ClCompile Include="..\src\Credits.cpp" />
     <ClCompile Include="..\src\FlowManager.cpp" />
     <ClCompile Include="..\src\GameOver.cpp" />
